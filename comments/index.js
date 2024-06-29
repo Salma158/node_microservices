@@ -3,23 +3,26 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
+const cors = require('cors')
+app.use(cors());
 
 let commentsByPostId = {};
 
 
 app.post('/posts/:id/comments', (req, res) => {
-  const { content } = req.body;
 
+  const comments = commentsByPostId[req.params.id] || [];
+  
   let commentId = 1;
-  if (commentsByPostId.length > 0) {
-    commentId = commentsByPostId[commentsByPostId.length - 1].id + 1;
+  if (comments.length > 0) {
+    commentId = comments[comments.length - 1].commentId + 1;
   }
 
+  const { content } = req.body;
   const newComment = {
     commentId,
     content
   };
-  const comments = commentsByPostId[req.params.id] || [];
 
   comments.push(newComment);
   commentsByPostId[req.params.id] = comments;
