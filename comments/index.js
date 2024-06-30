@@ -44,6 +44,11 @@ app.get('/posts/:id/comments', (req, res) => {
 });
 
 
+app.post("/events", (req, res) => {
+  console.log("Received Event", req.body.type);
+  res.status(200);
+});
+
 
 app.listen(4001, () => {
   console.log('Listening on 4001');
