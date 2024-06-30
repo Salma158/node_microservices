@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, FormControl, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, FormControl, Button} from "react-bootstrap";
 
 const PostCreate = () => {
   const [title, setTitle] = useState("");
@@ -16,11 +16,8 @@ const PostCreate = () => {
   };
 
   return (
-    <Container fluid className="d-flex vh-100">
-      <Row className="justify-content-center align-items-center w-100">
-        <Col xs={12} md={6}>
-          <Form onSubmit={onSubmit}>
-          <h1 className="text-center">Add Post</h1>
+          <Form onSubmit={onSubmit} className="mb-5">
+            <h2 className="text-center">Add Post</h2>
             <Form.Group>
               <FormControl
                 type="text"
@@ -34,9 +31,6 @@ const PostCreate = () => {
               Submit
             </Button>
           </Form>
-        </Col>
-      </Row>
-    </Container>
   );
 };
 
