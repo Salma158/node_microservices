@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card } from "react-bootstrap";
+import CommentForm from "./CommentForm";
 
 const PostsList = () => {
   const [posts, setPosts] = useState([]);
@@ -24,6 +25,7 @@ const PostsList = () => {
         <Card key={post.id} className="mb-4">
           <Card.Body>
             <Card.Title>{post.title}</Card.Title>
+            <CommentForm postId={post.id}/>
           </Card.Body>
         </Card>
       ))}

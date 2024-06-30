@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, FormControl, Button} from "react-bootstrap";
 
-const PostCreate = () => {
+const PostForm = () => {
   const [title, setTitle] = useState("");
 
   const onSubmit = async (event) => {
@@ -34,4 +34,4 @@ const PostCreate = () => {
   );
 };
 
-export default PostCreate;
+export default PostForm;
