@@ -8,7 +8,7 @@ app.use(cors());
 
 let posts = [];
 
-app.post('/posts', (req, res) => {
+app.post('/posts', async (req, res) => {
   const { title } = req.body;
 
   let id = 1;
@@ -20,6 +20,12 @@ app.post('/posts', (req, res) => {
     id,
     title
   };
+
+  await axios.post('http://localhost:4005/events', {
+    type: 'PostCreated',
+    data: newPost
+  });
+
 
   posts.push(newPost);
   res.status(201).send(newPost);
